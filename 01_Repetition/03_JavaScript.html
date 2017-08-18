@@ -1,0 +1,56 @@
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>JavaScript</title>
+</head>
+<body>
+  <h1>Check out the console, bruuuuuh</h1>
+
+  <script>
+    const data = [
+      { name: "Michael", hobbies: ["chess", "hiking"] },
+      { name: "Lisa", hobbies: ["chess", "cooking"] },
+      { name: "Simon", hobbies: ["hiking", "cooking", "cinema"] },
+      { name: "Bob", hobbies: ["hiking", "chess"] },
+      { name: "Lea", hobbies: ["cinema", "cooking", "hiking"] },
+    ];
+
+    function printNamesByHobby(hobby) {
+      return data.filter(person => person.hobbies.indexOf(hobby) >= 0).map(person => person.name);
+    }
+
+    function printNamesByHobby2(hobby) {
+      return data.reduce((found, dataRecord) => (dataRecord.hobbies.indexOf(hobby) >= 0) ? [...found, dataRecord.name] : found, []);
+    }
+
+    let hobby = "chess";
+    console.log(`${printNamesByHobby2(hobby)} haben das Hobby: ${hobby}.`);
+
+    // ----------------------
+
+    function groupsByHobby() {
+      return data.reduce((result, item) => {
+        const key = item.hobbies.sort().join(",");
+        result[key] = result[key] ? [...result[key], item.name] : [item.name];
+        return result;
+      }, {});
+    }
+
+    function printNamesWithSameHobbies() {
+      const groups = groupsByHobby();
+      return Object.keys(groups).map((key) => {
+        return {
+          key: key,
+          members: groups[key]
+        }
+      }).filter(group => group.members.length >= 2);
+    }
+
+    printNamesWithSameHobbies().forEach((x) => {
+      console.log(`${x.members} haben die gleichen Hobbies und zwar ${x.key}`);
+    });
+  </script>
+</body>
+</html>

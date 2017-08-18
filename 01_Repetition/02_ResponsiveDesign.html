@@ -1,0 +1,54 @@
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Responsive Design</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    header, footer, aside {
+      border: 1px black solid;
+    }
+
+    .row {
+      display: flex;
+      flex-wrap: wrap;
+    }
+
+    aside {
+      order: -1;
+      flex: 1 1 50%;
+    }
+
+    @media screen and (min-width: 600px) {
+      .row {
+        flex-wrap: nowrap;
+      }
+
+      aside {
+        order: inherit;
+        flex: 0 0 150px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="row">
+    <header>HEADER</header>
+
+    <div>
+      <asdie>Aside Links</aside>
+      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Asperiores fugiat qui cupiditate nulla, suscipit odio. Consequatur quo, exercitationem cumque assumenda saepe magni cum necessitatibus rerum, earum vero sunt possimus nihil!</p>
+      <aside>Aside Rechts</aside>
+    </div>
+
+    <footer>Footer</footer>
+  </div>
+</body>
+</html>

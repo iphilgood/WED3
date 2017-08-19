@@ -130,7 +130,7 @@ class Router {
   }
   
   initialize() {
-	// get/parse route from URL (self.location.pathname)
+    // get/parse route from URL (self.location.pathname)
     // to activate the user-entered route
     const activatedRoute = ...;
     this.activate(activatedRoute || this.routeConfig.initialRoute)
@@ -244,7 +244,7 @@ class CounterController {
     });
     $(viewRef).on("click", "[data-click=up]", (e) => {
       this.counterService.up((model) => {
-          this.renderIndexView(viewRef, model);
+        this.renderIndexView(viewRef, model);
       })
       e.preventDefault;
     })
@@ -390,7 +390,7 @@ di.resolve("CounterService");
 
 ### Example
 
-```json
+```
 {
   // The base directory to resolve the entry
   context: rootDir,

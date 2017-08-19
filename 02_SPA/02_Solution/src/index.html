@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<title>Team Counter Simple SPA</title>
+
+		<link rel="stylesheet" href="styles/main.css" type="text/css">
+
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.6/handlebars.min.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+
+		<script src="scripts/ui.js"></script>
+		<script src="scripts/bl.js"></script>
+		<script src="scripts/dl.js"></script>
+
+		<script id="index-view" type="text/x-handlebars-template">
+			<p>Your team is <strong>{{counter.team}}</strong></p>
+			<p>Your current count is <strong>{{counter.count}}</strong></p>
+			<form>
+				<button data-click="up">Count Up</button>
+			</form>
+		</script>
+
+		<script>
+			// bootstrap
+			(function($) {
+			    $(function() {
+                    let counterDataResource = new dl.CounterDataResource();
+					let counterService = new bl.CounterService(counterDataResource);
+                    let controller = new ui.CounterController(counterService);
+
+                    let routerOutlet = $("#appContainer");
+                    let router = new ui.Router({
+                        rootPath: "/",
+                        initialRoute: "index",
+                        routes: {
+                            "index": () => { controller.indexAction(routerOutlet); }
+                        }
+                    });
+                    router.initialize();
+				});
+			})(jQuery);
+
+		</script>
+	</head>
+	<body>
+		<h1>Team Counter Simple SPA</h1>
+		<div id="appContainer"></div>
+	</body>
+</html>

@@ -9,7 +9,11 @@ const scriptsDir = "/scripts";
 module.exports = {
   context: rootDir, // a base directory to resolve the "entry"
   entry: {
-    main: srcDir + scriptsDir + "/main.ts"
+    main: [
+      `${srcDir}${scriptsDir}/main.ts`,
+      `${srcDir}${scriptsDir}/bl.ts`,
+      `${srcDir}${scriptsDir}/dl.ts`,
+    ]
   },
   resolve: {
     extensions: ['.ts', '.js']

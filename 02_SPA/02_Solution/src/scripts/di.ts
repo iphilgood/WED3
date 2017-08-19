@@ -10,12 +10,13 @@ interface Registration<T> {
 }
 
 class Container {
-  private registrations: { [key: string]: Registration<any>} = { };
+  private registrations: { [key: string]: Registration<any> } = { };
 
   constructor() { }
 
   register<T>(name: string, dependencies: string[], type: new (...args: any[]) => T): void {
-    this.registrations[name] = { name, dependencies, type, instance: null }
+    console.log("Registering: " + name);
+    this.registrations[name] = { name, dependencies, type, instance: null };
   }
 
   resolve<T>(name: string): T {
@@ -23,7 +24,7 @@ class Container {
       this.registrations[name].instance = new this.registrations[name].type(...this.resolveDependencies(name));
     }
 
-    return this.registrations[name].instance;
+    return <T>this.registrations[name].instance;
   }
 
   resolveDependencies(name: string): any[] {
@@ -31,7 +32,7 @@ class Container {
     if (this.registrations[name].dependencies) {
       this.registrations[name].dependencies.forEach((dependency) => {
         dependencies.push(this.resolve<any>(dependency));
-      })
+      });
     }
 
     return dependencies;

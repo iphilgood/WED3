@@ -40,7 +40,7 @@ export class AccountResourceService extends ResourceBase {
         return null;
       })
       .catch((error: Response | any) => {
-        return Observable.throw(error.message);
+        return Observable.of<BankAccount>(null);
       });
   }
 

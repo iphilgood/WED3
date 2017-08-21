@@ -13,12 +13,10 @@ import {LoginInfo} from '../models';
   styleUrls: ['login.component.scss']
 })
 export class LoginComponent implements OnInit {
-
   private backUrl;
 
   public login: string;
   public password: string;
-
   public isProcessing = false;
 
   constructor(private autSvc: AuthService, private navigationSvc: NavigationService, route: ActivatedRoute) {

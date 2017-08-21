@@ -1,24 +1,32 @@
 <div>
   <h2>New Payment</h2>
 
-  <form (ngSubmit)="transfer(payForm)" #payForm="ngForm">
+  <form [hidden]="isProcessed" (ngSubmit)="transfer(payForm)" #payForm="ngForm">
     <div>
       <label for="from">From:</label><br />
       <input type="text" ngModel #from="ngModel" name="from" required disabled value="{{bankAccount?.owner.firstname}} {{bankAccount?.owner.lastname}} ({{bankAccount?.owner.accountNr}})">
     </div>
 
     <div>
-      <label for="to">To:</label><br />
-      <input type="string" ngModel #to="ngModel" name="to" required>
+      <label for="to">To: {{targetBankAccount?.owner.firstname}} {{targetBankAccount?.owner.lastname}}</label><br />
+      <input type="string" ngModel #to="ngModel" (ngModelChange)="targetChanged($event)" id="to" name="to" required min="1000001" max="9999999" step="1">
+      <div [hidden]="to.valid || targetBankAccountHasMinLength">Please specify account</div>
+      <div [hidden]="targetBankAccount || !targetBankAccountHasMinLength">Unknown account</div>
     </div>
 
     <div>
       <label for="amount">Amount:</label><br />
-      <input type="number" ngModel #amount="ngModel" name="amount" required>
+      <input type="number" ngModel #amount="ngModel" name="amount" required min="1" step="1">
+      <div [hidden]="amount.valid">Please specify amount</div>
     </div>
 
     <div>
-      <input type="submit" value="Pay">
+      <input type="submit" value="Pay" [disabled]="!payForm.valid">
     </div>
   </form>
+
+  <div [hidden]="!isProcessed">
+    <p>Transaction to {{successfulTransaction?.target}} succeeded!</p>
+    <p>New balance {{successfulTransaction?.total | currency: 'CHF'}}.</p>
+    <p><button (click)="isProcessed = false">Start Over</button></p>
 </div>

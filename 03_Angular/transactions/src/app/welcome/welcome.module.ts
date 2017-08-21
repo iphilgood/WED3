@@ -12,7 +12,9 @@ import {AuthModule} from '../auth/auth.module';
     WelcomeComponent
   ],
   imports: [
-    WelcomeRoutingModule, SharedModule, AuthModule
+    WelcomeRoutingModule,
+    SharedModule,
+    AuthModule
   ],
   exports: [
     WelcomeComponent

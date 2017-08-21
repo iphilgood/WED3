@@ -1,0 +1,46 @@
+<h1>All Transactions</h1>
+
+<div>
+  <a class="nav-link" routerLink="/dashboard">Back to Dashboard</a>
+</div>
+
+<h2>Filter</h2>
+
+<label for="year">Select Year:</label>
+<select class="form-control" [(ngModel)]="selectedYear" name="year" id="year">
+  <option *ngFor="let year of years" [ngValue]="year">
+    {{year}}
+  </option>
+</select>
+
+<label for="month">Select Month</label>
+<select class="form-control" [(ngModel)]="selectedMonth" name="month" id="month">
+  <option *ngFor="let month of months; let i = index" [ngValue]="i">
+    {{month}}
+  </option>
+</select>
+
+<table>
+  <thead>
+    <tr>
+      <th>Source</th>
+      <th>Target</th>
+      <th>Amount [CHF]</th>
+      <th>Balance [CHF]</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <tr *ngIf="transactions?.length <= 0">
+      <td colspan="5">No transactions available</td>
+    </tr>
+
+    <tr *ngFor="let transaction of transactions">
+      <td>{{transaction.date | date:'longDate'}}</td>
+      <td>{{transaction.from}}</td>
+      <td>{{transaction.target}}</td>
+      <td>{{transaction.amount | currency:'CHF'}}</td>
+      <td>{{transaction.total | currency:'CHF'}}</td>
+    </tr>
+  </tbody>
+</table>

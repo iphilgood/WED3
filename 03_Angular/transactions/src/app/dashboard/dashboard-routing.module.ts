@@ -1,12 +1,18 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { DashboardComponent } from './components/dashboard.component';
+import { AuthGuard } from '../auth/services/';
+import { ListComponent } from './components/list/list.component';
+import { PanelComponent } from './components/panel/panel.component';
 
 const appRoutes: Routes = [
   {
     path: '',
-    component: null, // TODO: Add initial router outlet dashboard component...
+    component: DashboardComponent,
+    canLoad: [AuthGuard],
     children: [
-      // TODO: Add routing path for dashboard here...
+      { path: 'transactions', component: ListComponent },
+      { path: '', component: PanelComponent }
     ]
   }
 ];

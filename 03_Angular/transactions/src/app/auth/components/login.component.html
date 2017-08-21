@@ -1,16 +1,16 @@
 <!-- TODO: Add ng2 specific directives/validation settings and add styling -->
-<form (ngSubmit)="doLogin(null)">
+<form (ngSubmit)="doLogin(loginForm)" #loginForm="ngForm">
   <div>
     User name:
     <div>
-      <input pattern=".{3,}" placeholder="User" type="text" name="login" />
+      <input pattern=".{3,}" placeholder="User" type="text" name="login" ngModel #login="ngModel" />
       <div>Please specify your login, at least three characters.</div>
     </div>
   </div>
   <div>
     Password:
     <div>
-      <input pattern=".{3,}" placeholder="Password" type="password" name="password" />
+      <input pattern=".{3,}" placeholder="Password" type="password" name="password" ngModel #password="ngModel" />
       <div>Please specify your login, at least three characters.</div>
     </div>
   </div>

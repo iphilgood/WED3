@@ -1,0 +1,24 @@
+<div>
+  <h2>New Payment</h2>
+
+  <form (ngSubmit)="transfer(payForm)" #payForm="ngForm">
+    <div>
+      <label for="from">From:</label><br />
+      <input type="text" ngModel #from="ngModel" name="from" required disabled value="{{bankAccount?.owner.firstname}} {{bankAccount?.owner.lastname}} ({{bankAccount?.owner.accountNr}})">
+    </div>
+
+    <div>
+      <label for="to">To:</label><br />
+      <input type="string" ngModel #to="ngModel" name="to" required>
+    </div>
+
+    <div>
+      <label for="amount">Amount:</label><br />
+      <input type="number" ngModel #amount="ngModel" name="amount" required>
+    </div>
+
+    <div>
+      <input type="submit" value="Pay">
+    </div>
+  </form>
+</div>

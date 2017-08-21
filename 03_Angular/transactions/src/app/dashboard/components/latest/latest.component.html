@@ -1,0 +1,21 @@
+<h2>Latest transactions</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th>Source</th>
+      <th>Target</th>
+      <th>Amount [CHF]</th>
+      <th>Balance [CHF]</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <tr *ngFor="let transaction of transactions">
+      <td>{{transaction.from}}</td>
+      <td>{{transaction.target}}</td>
+      <td>{{transaction.amount}}</td>
+      <td>{{transaction.total}}</td>
+    </tr>
+  </tbody>
+</table>

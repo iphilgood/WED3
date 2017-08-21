@@ -19,7 +19,7 @@ export class RegisterComponent implements OnInit {
   public firstname: string;
   public lastname: string;
 
-  public isProcessing: boolean = false;
+  public isProcessing = false;
 
   constructor(private autSvc: AuthService, private navigationSvc: NavigationService) {
   }

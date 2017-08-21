@@ -1,29 +1,37 @@
-import {NgModule, ModuleWithProviders} from '@angular/core';
+import { NgModule, ModuleWithProviders } from '@angular/core';
+import { RequestOptions } from '@angular/http';
 
-import {SharedModule} from '../shared/shared.module';
-
-import {DashbaordRoutingModule} from './dashboard-routing.module';
+import { SharedModule } from '../shared/shared.module';
+import { DashbaordRoutingModule } from './dashboard-routing.module';
+import { DashboardComponent } from './components/dashboard.component';
+import { LatestComponent } from './components/latest/latest.component';
+import { PaymentComponent } from './components/payment/payment.component';
+import { TransactionResourceService } from './resources';
+import { TransactionService } from './services';
+import { AuthRequestOptions, SecurityTokenStore } from '../auth';
+import { AuthModule } from '../auth/auth.module';
+import { ListComponent } from './components/list/list.component';
+import { PanelComponent } from './components/panel/panel.component';
 
 @NgModule({
   declarations: [
-    // Declarations (Components / Directives) used from/within the Module
+    DashboardComponent,
+    LatestComponent,
+    PaymentComponent,
+    ListComponent,
+    PanelComponent
   ],
   imports: [
-    // Other Modules to import (imports the exported Components/Directives from the other module)
-    SharedModule, DashbaordRoutingModule
+    SharedModule,
+    DashbaordRoutingModule,
+    AuthModule
   ],
   exports: [
-    // Components/Directives (or even Modules) to export (available for other modules; and forRoot() )
+    DashboardComponent
   ],
   providers: [
-    // DI Providers (Services, Tokens, Factories...), may be instantiated multiple times
+    TransactionResourceService,
+    TransactionService
   ]
 })
-export class DashboardModule {
-  static forRoot(config?: {}): ModuleWithProviders {
-    return {
-      ngModule: DashboardModule,
-      providers: [ ]
-    };
-  }
-}
+export class DashboardModule { }

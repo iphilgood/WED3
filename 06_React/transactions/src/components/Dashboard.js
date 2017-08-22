@@ -1,6 +1,11 @@
 // @flow
 
-import React from 'react'
+import React from 'react';
+
+import type { User } from '../api';
+import NewPayment from './NewPayment';
+import LatestTransactions from './LatestTransactions';
+import mitt from './mitt';
 
 /*
   Use the api functions to call the API server. For example, the transactions
@@ -16,17 +21,21 @@ import React from 'react'
 
 export type Props = {
   token: string,
+  user: ?User,
 }
 
 class Dashboard extends React.Component {
 
-  props: Props
+  props: Props;
+  emitter = mitt();
 
   render() {
 
     return (
       <div>
-        This is the dashboard
+        <h1>Account: {this.props.user.accountNr}</h1>
+        <NewPayment emitter={this.emitter} {...this.props} />
+        <LatestTransactions emitter={this.emitter} {...this.props} />
       </div>
     )
   }

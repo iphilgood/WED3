@@ -72,13 +72,15 @@ class App extends React.Component {
           <nav>
             <span>{user.firstname} {user.lastname} &ndash; {user.accountNr}</span>
             {/* Links inside the App are created using the react-router's Link component */}
-            <Link to="/">Home</Link>
-            <Link to="/dashboard">Kontoübersicht</Link>
-            <Link to="/transactions">Zahlungen</Link>
-            <a href="/logout" onClick={(event) => {
-              event.preventDefault()
-              this.signout(() => history.push('/'))
-            }}>Logout {user.firstname} {user.lastname}</a>
+            <ul>
+              <li><Link to="/">Home</Link></li>
+              <li><Link to="/dashboard">Kontoübersicht</Link></li>
+              <li><Link to="/transactions">Zahlungen</Link></li>
+              <li><a href="/logout" onClick={(event) => {
+                event.preventDefault()
+                this.signout(() => history.push('/'))
+              }}>Logout {user.firstname} {user.lastname}</a></li>
+            </ul>
           </nav>
         )
       } else {
@@ -97,7 +99,7 @@ class App extends React.Component {
             The following are protected routes that are only available for logged-in users. We also pass the user and token so
             these components can do API calls. PrivateRoute is not part of react-router but our own implementation.
           */}
-          <PrivateRoute path="/dashboard" isAuthenticated={isAuthenticated} token={token} component={Dashboard}/>
+          <PrivateRoute path="/dashboard" isAuthenticated={isAuthenticated} token={token} user={user} component={Dashboard}/>
           <PrivateRoute path="/transactions" isAuthenticated={isAuthenticated} token={token} user={user} component={AllTransactions}/>
         </div>
       </Router>

@@ -4,6 +4,8 @@ import {Router} from '@angular/router';
 @Injectable()
 export class NavigationService {
 
+  constructor(private router: Router) { }
+
   public goToUrl(url: string): void {
     this.router.navigateByUrl(url);
   }
@@ -14,8 +16,5 @@ export class NavigationService {
 
   public goToDashboard(): void {
     this.goToUrl('/dashboard');
-  }
-
-  constructor(private router: Router) {
   }
 }

@@ -3,7 +3,7 @@ import { Response, Http, Headers, RequestOptionsArgs } from '@angular/http';
 
 import { Observable } from 'rxjs';
 
-import {environment } from '../../../environments/environment';
+import { environment } from '../../../environments/environment';
 
 export abstract class ResourceBase {
   static JSON_HEADERS: RequestOptionsArgs = { headers: new Headers({ 'content-type': 'application/json' }) };

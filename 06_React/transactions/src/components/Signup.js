@@ -6,7 +6,7 @@ import { Redirect } from 'react-router-dom'
 import { signup } from '../api'
 
 class Signup extends React.Component {
-    
+
   state: {
     login: string,
     firstname: string,
@@ -15,7 +15,7 @@ class Signup extends React.Component {
     error: string,
     redirectToReferrer: boolean,
   }
-  
+
   state = {
     login: "",
     firstname: "",
@@ -30,7 +30,7 @@ class Signup extends React.Component {
       this.setState({login: event.target.value})
     }
   }
-  
+
   handleFirstNameChanged = (event: Event) => {
     if(event.target instanceof HTMLInputElement) {
       this.setState({firstname: event.target.value})
@@ -42,7 +42,7 @@ class Signup extends React.Component {
       this.setState({lastname: event.target.value})
     }
   }
-  
+
   handlePasswordChanged = (event: Event) => {
     if(event.target instanceof HTMLInputElement) {
       this.setState({password: event.target.value})
@@ -55,20 +55,20 @@ class Signup extends React.Component {
     signup(login, firstname, lastname, password).then(result => {
       console.log("Signup result ", result)
       this.setState({redirectToReferrer: true, error: null})
-    }).catch(error => 
+    }).catch(error =>
       this.setState({error})
     )
   }
 
-  render() {    
+  render() {
     const { redirectToReferrer, error } = this.state
-    
+
     if (redirectToReferrer) {
       return (
         <Redirect to='/login'/>
       )
     }
-    
+
     return (
       <div>
         <h1>Bank of Rapperswil</h1>

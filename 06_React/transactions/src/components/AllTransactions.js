@@ -10,10 +10,10 @@ export type Props = {
 }
 
 class AllTransactions extends React.Component {
-  
+
   props: Props
-  
-  render() {    
+
+  render() {
     return (
       <div>All Transactions</div>
     )

@@ -6,7 +6,7 @@ import { Redirect, Link } from 'react-router-dom'
 export type Props = {
   /* Callback to submit an authentication request to the server */
   authenticate: (login: string, password: string, callback: (error: ?Error) => void) => void,
-  /* We need to know what page the user tried to access so we can 
+  /* We need to know what page the user tried to access so we can
      redirect after logging in */
   location: {
     state?: {
@@ -17,16 +17,16 @@ export type Props = {
 }
 
 class Login extends React.Component {
-  
+
   props: Props
-  
+
   state: {
     login: string,
     password: string,
     error?: Error,
     redirectToReferrer: boolean,
   }
-  
+
   state = {
     login: "",
     password: "",
@@ -61,13 +61,13 @@ class Login extends React.Component {
   render() {
     const { from } = this.props.location.state || { from: { pathname: '/dashboard' } }
     const { redirectToReferrer, error } = this.state
-    
+
     if (redirectToReferrer) {
       return (
         <Redirect to={from}/>
       )
     }
-        
+
     return (
       <div>
         <h1>Bank of Rapperswil</h1>

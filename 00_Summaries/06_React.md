@@ -294,6 +294,19 @@ Für jeden Teil des States in deiner Applikation:
 * Either the common owner or another component higher up in the hierarchy should own the state.
 * If you can't find a component where it makes sense to own the state, create a new component simply for holding the state and add it somewhere in the hierarchy above the common owner component.
 
+### Unterschied zwischen State und Props
+
+* State repräsentiert State einer Komponente und wird oft zu den Props einer Unterkomponente
+* Props sind die Attribute einer Komponente werden ihr innerhalb der `render()` Methode in der Oberkomponente übergeben
+  `<MyChild name={this.state.childsName} />`
+  * Der State der Oberkomponente wird zu den Props der Unterelemente
+    `this.state.childsName` => `this.props.childsName`
+* Props sind **read-only** und somit **immutable**
+  * Müssen sie trotzdem geändert werden, muss die Oberkomponente über ihren State die Props der Unterkomponente aktualisieren
+    `this.setState({childsName: 'New name'});`
+  * Dies geschieht oft über einen Callback, welcher von der Oberkomponenten an die Unterkomponente übergeben wird
+    `<MyChild name={this.state.childsName} onNameChanged={this.handleName} />`
+
 ## Forms
 
 ### Example
@@ -504,7 +517,7 @@ clearInterval(this.timerID)
 4. `componentDidMount()`
    - DOM ist aufgebaut
    - Guter Punkt, um zum Beispiel Remote-Daten zu laden
-   - `setState` Aufruf führt zu re-rendering
+   - `setState()` Aufruf führt zu re-rendering
 
 ### Updating
 
@@ -520,7 +533,7 @@ clearInterval(this.timerID)
 
 ### Unmouting
 
-1. componentWillUnmount()
+1. `componentWillUnmount()`
    - Aufräumen
 
 ### Example: Clock

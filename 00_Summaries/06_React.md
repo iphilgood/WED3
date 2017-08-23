@@ -151,7 +151,7 @@ ist äquivalent zu
 ```jsx
 class HelloMessage extends React.Component {
   render() {
-      return <div>Hello {this.props.name}</div>
+    return <div>Hello {this.props.name}</div>
   }
 }
 ```
@@ -286,14 +286,14 @@ Der `state` einer Komponente ist immer private
 ```jsx
 class SignupForm extends React.Component {
   render = () => {
-  	<form>
+    <form>
       <div>
         <label>Username</label>
         <input value={this.state.username} type="text" />
       </div>
       <div>
         <label>Password</label>
-        <input value={this.state.password} type="password"
+        <input value={this.state.password} type="password" />
       </div>
       <div>
         <button type="submit">Login</button>

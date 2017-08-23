@@ -10,23 +10,19 @@ export type Props = {
      redirect after logging in */
   location: {
     state?: {
-
       from: string,
     }
   }
 }
 
-class Login extends React.Component {
+type State = {
+  login: string,
+  password: string,
+  error?: Error,
+  redirectToReferrer: boolean,
+}
 
-  props: Props
-
-  state: {
-    login: string,
-    password: string,
-    error?: Error,
-    redirectToReferrer: boolean,
-  }
-
+class Login extends React.Component<Props, State> {
   state = {
     login: "",
     password: "",
@@ -53,7 +49,10 @@ class Login extends React.Component {
       if(error) {
         this.setState({error})
       } else {
-        this.setState({redirectToReferrer: true, error: null})
+        this.setState((prevState) => {
+          error: null,
+          redirectToReferrer: true,
+        })
       }
     })
   }
@@ -84,4 +83,4 @@ class Login extends React.Component {
   }
 }
 
-export default Login
+export default Login;

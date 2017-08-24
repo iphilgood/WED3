@@ -1,0 +1,45 @@
+﻿<Properties StartupConfiguration="{BE94367E-0CEC-4FD7-AA9A-CF26566F19B9}|Default">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Views/Home/Overview.cshtml">
+    <Files>
+      <File FileName="Startup.cs" Line="10" Column="23" />
+      <File FileName="Controllers/HomeController.cs" Line="31" Column="40" />
+      <File FileName="Models/Bmi.cs" Line="4" Column="20" />
+      <File FileName="Views/Home/Index.cshtml" Line="28" Column="27" />
+      <File FileName="Views/Home/Overview.cshtml" Line="10" Column="34" />
+      <File FileName="Services/BmiService.cs" Line="16" Column="1" />
+    </Files>
+    <Pads>
+      <Pad Id="ProjectPad">
+        <State name="__root__">
+          <Node name="BmiCalculator" expanded="True">
+            <Node name="BmiCalculator" expanded="True">
+              <Node name="Controllers" expanded="True" />
+              <Node name="Models" expanded="True" />
+              <Node name="Services" expanded="True" />
+              <Node name="Views" expanded="True">
+                <Node name="Home" expanded="True">
+                  <Node name="Overview.cshtml" selected="True" />
+                </Node>
+              </Node>
+            </Node>
+          </Node>
+        </State>
+      </Pad>
+      <Pad Id="ClassPad">
+        <State name="__root__">
+          <Node name="BmiCalculator" expanded="True" selected="True" />
+        </State>
+      </Pad>
+      <Pad Id="MonoDevelop.Debugger.WatchPad">
+        <State />
+      </Pad>
+    </Pads>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Release" />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.ItemProperties.BmiCalculator PreferredExecutionTarget="MonoDevelop.Default" />
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MultiItemStartupConfigurations />
+</Properties>

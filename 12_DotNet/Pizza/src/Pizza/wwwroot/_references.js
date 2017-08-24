@@ -1,0 +1,12 @@
+﻿/// <autosync enabled="true" />
+/// <reference path="app/js/ajaxsample.js" />
+/// <reference path="app/js/ajaxutil.js" />
+/// <reference path="app/js/handlebars-v4.0.5 (1).js" />
+/// <reference path="app/js/jquery-2.1.4.min.js" />
+/// <reference path="app/js/restclient.js" />
+/// <reference path="js/site.js" />
+/// <reference path="lib/bootstrap/dist/js/bootstrap.js" />
+/// <reference path="lib/jquery/dist/jquery.js" />
+/// <reference path="lib/jquery-ajax-unobtrusive/jquery.unobtrusive-ajax.js" />
+/// <reference path="lib/jquery-validation/dist/jquery.validate.js" />
+/// <reference path="lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.js" />

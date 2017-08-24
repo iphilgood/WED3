@@ -1,0 +1,56 @@
+﻿@using System
+@using Microsoft.EntityFrameworkCore
+@using Pizza.Data
+
+@inject UserManager<ApplicationUser> manager;
+@inject ApplicationDbContext context;
+
+@{
+    ViewData["Title"] = "Home Page";
+}
+@{
+
+    var user = await manager.GetUserAsync(User);
+    if (user != null && await manager.IsInRoleAsync(user, "Administrator"))
+    {
+        <h1>Alle Bestellungen</h1>
+
+
+        <table class="table">
+            <thead>
+            <tr>
+                <th>#</th>
+                <th>Besteller</th>
+                <th>Pizza</th>
+                <th>State</th>
+            </tr>
+            </thead>
+
+            <tbody>
+            @foreach (var x in context.Orders.OrderByDescending(x=>x.Date).Take(10).Include(x => x.Customer))
+            {
+                <tr>
+                    <td><a asp-action="Show" asp-controller="Order" asp-route-Id="@x.Id">@x.Id</a></td>
+                    <td>@x.Customer.UserName</td>
+                    <td>@x.Name</td>    
+                    <td>@x.State</td>
+                </tr>
+            }
+            </tbody>
+
+        </table>
+    }
+}
+<div>
+    <img src="~/images/pizza.jpg"/>
+</div>
+<a asp-action="Create" asp-controller="Order" class="btn btn-default">Neue Bestellung!</a>
+
+
+
+<a href="~/app/html/ajaxSample.html" class="btn btn-default">AJAX-Variante</a>
+<a href="~/swagger/ui/index.html#/" class="btn btn-default">Swagger</a>
+
+@section Header{
+    <li><a asp-area="" asp-controller="Home" asp-action="Custom">Hello World</a></li>
+}

@@ -1,0 +1,45 @@
+﻿@{
+  double tempMin = 0.0;
+  double calculatedBmi = (double) ViewData["calculatedBmi"];
+  var data = new[]
+  {
+    new {Text = "starkes Untergewicht", Max = 16.0},
+    new {Text = "mäßiges Untergewicht", Max = 17.0},
+    new {Text = "leichtes Untergewicht", Max = 18.5},
+    new {Text = "Normalgewicht", Max = 25.0},
+    new {Text = "Präadipositas", Max = 30.0},
+    new {Text = "Adipositas Grad I", Max = 35.0},
+    new {Text = "Adipositas Grad II", Max = 40.0},
+    new {Text = "Adipositas Grad III", Max = 999.0},
+    };
+}
+<div style="margin-bottom: 20px"></div>
+
+<div class="row">
+  <div class="col">
+  <div class="panel panel-default">
+    @{
+      if (calculatedBmi >= 0) {
+        <div class="panel-heading">Ihr BMI ist: @calculatedBmi</div>
+      }
+    }
+    <table class="table">
+      <tr>
+        <th>Beschreibung</th>
+        <th>Von</th>
+        <th>Bis</th>
+      </tr>
+
+      @{
+        foreach(var element in data) {
+          <tr class="@(calculatedBmi > tempMin && calculatedBmi <= element.Max ? "info" : "")">
+            <td>@element.Text</td>
+            <td>@tempMin</td>
+            <td>@element.Max</td>
+          </tr>
+          tempMin = element.Max;
+        }
+      }
+    </table>
+	</div>
+</div>
